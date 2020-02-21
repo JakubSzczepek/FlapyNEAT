@@ -222,6 +222,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    bird.jump()
         add_pipe = False
         to_remove = []
         for pipe in pipes:
@@ -246,6 +249,7 @@ def main():
         if bird.y + bird.image.get_height() >= 730:
             pass
 
+        bird.move()
         ground.move()
         draw_window(window, bird, pipes, ground, score)
 
